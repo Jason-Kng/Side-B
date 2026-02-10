@@ -1,0 +1,13 @@
+# Binaries
+Side-B
+Side-B.exe
+bin/
+
+# Databases
+*.db
+*.db-journal
+
+# Secrets
+.env
+
+
