@@ -17,7 +17,9 @@ func InitDB(filepath string) (*sql.DB, error) {
 		id INTEGER PRIMARY KEY,
 		artist_id VARCHAR(255),
 		title VARCHAR(255),
-		release_year INTEGER
+		release_date TEXT,
+		country TEXT,
+		barcode INTEGER
 	);`
 
 	_, err = db.Exec(query)

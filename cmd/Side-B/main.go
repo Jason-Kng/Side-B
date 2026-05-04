@@ -8,18 +8,17 @@ import (
 )
 
 func main() {
+	discogsToken := "mMlciUEsBDqynVcWsBzdrftPmgQvzwlkDyxokrsM"
+
+	usrToken := fmt.Sprintf("Discogs token=%v", discogsToken)
+
 	database, err := db.InitDB("./Side-B.db")
 	if err != nil {
 		log.Fatalf("Could not initalize database: %v", err)
 	}
 	defer database.Close()
 
-	// newRecord := types.Record{
-	// ID:          33652617,
-	// ArtistID:    128537,
-	// Title:       "On Guitar",
-	// ReleaseYear: 2025,
-	// }
+	resp, err := api.requestRelease(37107642, usrToken)
 
 	// err = db.AddRecord(database, newRecord)
 	// if err != nil {

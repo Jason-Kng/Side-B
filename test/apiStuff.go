@@ -43,7 +43,7 @@ func printFolderStruct(data types.Folder) {
 
 func main() {
 	discogsToken := "mMlciUEsBDqynVcWsBzdrftPmgQvzwlkDyxokrsM"
-	req, err := http.NewRequest(http.MethodGet, "https://api.discogs.com/releases/33652617", nil)
+	req, err := http.NewRequest(http.MethodGet, "https://api.discogs.com/releases/37107642", nil)
 	// req, err := http.NewRequest(http.MethodGet, "https://api.discogs.com/oauth/identity", nil)
 	// req, err := http.NewRequest(http.MethodGet, "https://api.discogs.com/users/JKing05/collection/folders/0/releases", nil)
 	if err != nil {

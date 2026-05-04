@@ -9,8 +9,8 @@ import (
 )
 
 func AddRecord(db *sql.DB, rec types.Record) error {
-	query := `INSERT INTO releases (id, artist_id, title, release_year) VALUES (?, ?, ?, ?)`
-	_, err := db.Exec(query, rec.ID, rec.ArtistID, rec.Title, rec.ReleaseYear)
+	query := `INSERT INTO releases (id, artist_id, title, release_date, country, barcode) VALUES (?, ?, ?, ?, ?, ?)`
+	_, err := db.Exec(query, rec.ID, rec.ArtistID, rec.Title, rec.ReleaseDate, rec.Country, rec.Barcode)
 	return err
 }
 
@@ -26,7 +26,7 @@ func GetAllRecords(db *sql.DB) ([]types.Record, error) {
 	for rows.Next() {
 		var r types.Record
 
-		err := rows.Scan(&r.ID, &r.ArtistID, &r.Title, &r.ReleaseYear)
+		err := rows.Scan(&r.ID, &r.ArtistID, &r.Title, &r.ReleaseDate, &r.Country, &r.Barcode)
 		if err != nil {
 			return nil, err
 		}

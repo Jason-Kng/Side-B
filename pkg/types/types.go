@@ -4,7 +4,9 @@ type Record struct {
 	ID          int
 	ArtistID    int
 	Title       string
-	ReleaseYear int
+	ReleaseDate string
+	Country     string
+	Barcode     int
 }
 
 type Item struct {
