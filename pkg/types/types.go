@@ -1,7 +1,8 @@
 package types
 
 type Record struct {
-	ID     int
-	Artist string
-	Title  string
+	ID          int
+	ArtistID    int
+	Title       string
+	ReleaseYear int
 }

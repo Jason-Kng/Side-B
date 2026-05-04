@@ -186,9 +186,9 @@ func printFolderStruct(data Folder) {
 
 func main() {
 	discogsToken := "mMlciUEsBDqynVcWsBzdrftPmgQvzwlkDyxokrsM"
-	// req, err := http.NewRequest(http.MethodGet, "https://api.discogs.com/releases/28423303", nil)
+	req, err := http.NewRequest(http.MethodGet, "https://api.discogs.com/releases/33652617", nil)
 	// req, err := http.NewRequest(http.MethodGet, "https://api.discogs.com/oauth/identity", nil)
-	req, err := http.NewRequest(http.MethodGet, "https://api.discogs.com/users/JKing05/collection/folders/0/releases", nil)
+	// req, err := http.NewRequest(http.MethodGet, "https://api.discogs.com/users/JKing05/collection/folders/0/releases", nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -208,19 +208,19 @@ func main() {
 
 	scanner := bufio.NewScanner(resp.Body)
 	for scanner.Scan() {
-		// var data Item
-		var data Folder
-		// var data User
-		if err := json.Unmarshal(scanner.Bytes(), &data); err != nil {
+		var itemData Item
+		// var folderData Folder
+		// var userData User
+		if err := json.Unmarshal(scanner.Bytes(), &itemData); err != nil {
 			log.Printf("Failed to parse JSON: %v", err)
 		}
 
-		for _, release := range data.Releases {
-			fmt.Printf(("Release: %v\n"), release.BasicInformation.Title)
-		}
-		// printStruct(data)
-		// PrintFolderStruct(data)
-		// printUserStruct(data)
+		// for _, release := range data.Releases {
+		// fmt.Printf(("Release: %v\n"), release.BasicInformation.Title)
+		// }
+		printStruct(itemData)
+		// printFolderStruct(folderData)
+		// printUserStruct(userData)
 		// fmt.Printf(scanner.Text())
 	}
 }

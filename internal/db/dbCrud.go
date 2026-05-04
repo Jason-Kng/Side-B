@@ -9,13 +9,13 @@ import (
 )
 
 func AddRecord(db *sql.DB, rec types.Record) error {
-	query := `INSERT INTO records (artist_id, title) VALUES (?, ?)`
-	_, err := db.Exec(query, rec.Artist, rec.Title)
+	query := `INSERT INTO releases (id, artist_id, title, release_year) VALUES (?, ?, ?, ?)`
+	_, err := db.Exec(query, rec.ID, rec.ArtistID, rec.Title, rec.ReleaseYear)
 	return err
 }
 
 func GetAllRecords(db *sql.DB) ([]types.Record, error) {
-	rows, err := db.Query("SELECT id, artist_id, title FROM records")
+	rows, err := db.Query("SELECT * FROM releases")
 	if err != nil {
 		return nil, err
 	}
@@ -26,7 +26,7 @@ func GetAllRecords(db *sql.DB) ([]types.Record, error) {
 	for rows.Next() {
 		var r types.Record
 
-		err := rows.Scan(&r.ID, &r.Artist, &r.Title)
+		err := rows.Scan(&r.ID, &r.ArtistID, &r.Title, &r.ReleaseYear)
 		if err != nil {
 			return nil, err
 		}

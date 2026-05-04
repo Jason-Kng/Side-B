@@ -15,8 +15,10 @@ func main() {
 	defer database.Close()
 
 	// newRecord := types.Record{
-	// Artist: "Charley Crockett",
-	// Title:  "$10 Cowboy",
+	// ID:          33652617,
+	// ArtistID:    128537,
+	// Title:       "On Guitar",
+	// ReleaseYear: 2025,
 	// }
 
 	// err = db.AddRecord(database, newRecord)
