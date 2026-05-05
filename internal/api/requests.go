@@ -25,35 +25,6 @@ func requestRelease(releaseID int, usrToken string) (*http.Response, error) {
 	return resp, nil
 }
 
-// func printStruct(data types.Item) {
-// 	// MarshalIndent adds whitespace and newlines
-// 	b, err := json.MarshalIndent(data, "", "  ")
-// 	if err != nil {
-// 		fmt.Println("Error printing struct:", err)
-// 		return
-// 	}
-// 	fmt.Println(string(b))
-// }
-//
-// func printUserStruct(data types.User) {
-// 	// MarshalIndent adds whitespace and newlines
-// 	b, err := json.MarshalIndent(data, "", "  ")
-// 	if err != nil {
-// 		fmt.Println("Error printing struct:", err)
-// 		return
-// 	}
-// 	fmt.Println(string(b))
-// }
-//
-// func printFolderStruct(data types.Folder) {
-// 	// MarshalIndent adds whitespace and newlines
-// 	b, err := json.MarshalIndent(data, "", "  ")
-// 	if err != nil {
-// 		fmt.Println("Error printing struct:", err)
-// 		return
-// 	}
-// 	fmt.Println(string(b))
-// }
 // func main() {
 // 	discogsToken := "mMlciUEsBDqynVcWsBzdrftPmgQvzwlkDyxokrsM"
 // 	req, err := http.NewRequest(http.MethodGet, "https://api.discogs.com/releases/37107642", nil)

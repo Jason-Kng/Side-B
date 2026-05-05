@@ -20,6 +20,8 @@ func main() {
 
 	resp, err := api.requestRelease(37107642, usrToken)
 
+	defer resp.Body.Close()
+
 	// err = db.AddRecord(database, newRecord)
 	// if err != nil {
 	// log.Printf("Error adding record: %v", err)
