@@ -8,14 +8,18 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
-func AddRecord(db *sql.DB, rec types.Record) error {
+type RecordStore struct {
+	db *sql.DB
+}
+
+func (s *RecordStore) AddRecord(rec types.Record) error {
 	query := `INSERT INTO releases (id, artist_id, title, release_date, country, barcode) VALUES (?, ?, ?, ?, ?, ?)`
-	_, err := db.Exec(query, rec.ID, rec.ArtistID, rec.Title, rec.ReleaseDate, rec.Country, rec.Barcode)
+	_, err := s.db.Exec(query, rec.ID, rec.ArtistID, rec.Title, rec.ReleaseDate, rec.Country, rec.Barcode)
 	return err
 }
 
-func GetAllRecords(db *sql.DB) ([]types.Record, error) {
-	rows, err := db.Query("SELECT * FROM releases")
+func (s *RecordStore) GetAllRecords() ([]types.Record, error) {
+	rows, err := s.db.Query("SELECT * FROM releases")
 	if err != nil {
 		return nil, err
 	}
