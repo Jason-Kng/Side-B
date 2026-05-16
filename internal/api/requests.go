@@ -1,12 +1,47 @@
 package api
 
 import (
+	"bufio"
+	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"time"
+
+	"github.com/Jason-Kng/Side-B/pkg/types"
 )
 
-func requestRelease(releaseID int, usrToken string) (*http.Response, error) {
+func printStruct(data types.Item) {
+	// MarshalIndent adds whitespace and newlines
+	b, err := json.MarshalIndent(data, "", "  ")
+	if err != nil {
+		fmt.Println("Error printing struct:", err)
+		return
+	}
+	fmt.Println(string(b))
+}
+
+func printUserStruct(data types.User) {
+	// MarshalIndent adds whitespace and newlines
+	b, err := json.MarshalIndent(data, "", "  ")
+	if err != nil {
+		fmt.Println("Error printing struct:", err)
+		return
+	}
+	fmt.Println(string(b))
+}
+
+func printFolderStruct(data types.Folder) {
+	// MarshalIndent adds whitespace and newlines
+	b, err := json.MarshalIndent(data, "", "  ")
+	if err != nil {
+		fmt.Println("Error printing struct:", err)
+		return
+	}
+	fmt.Println(string(b))
+}
+
+func RequestRelease(releaseID int, usrToken string) (*http.Response, error) {
 	url := fmt.Sprintf("https://api.discogs.com/releases/%v", releaseID)
 	req, err := http.NewRequest(http.MethodGet, url, nil)
 	if err != nil {
@@ -23,6 +58,24 @@ func requestRelease(releaseID int, usrToken string) (*http.Response, error) {
 	}
 
 	return resp, nil
+}
+
+func ReturnResponse(resp *http.Response) {
+	scanner := bufio.NewScanner(resp.Body)
+	for scanner.Scan() {
+		var itemData types.Item
+		// var folderData types.Folder
+		// var userData types.User
+
+		if err := json.Unmarshal(scanner.Bytes(), &itemData); err != nil {
+			log.Printf("Failed to parse JSON: %v", err)
+		}
+
+		printStruct(itemData)
+		// printFolderStruct(folderData)
+		// printUserStruct(userData)
+		// fmt.Printf(scanner.Text())
+	}
 }
 
 // func main() {
