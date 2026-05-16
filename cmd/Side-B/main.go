@@ -20,7 +20,7 @@ func main() {
 
 	usrToken := fmt.Sprintf("Discogs token=%v", discogsToken)
 
-	database, err := db.InitDB("./Side-B.db")
+	database, err := db.Conn("./Side-B.db")
 	if err != nil {
 		log.Fatalf("Could not initalize database: %v", err)
 	}

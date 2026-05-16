@@ -1,16 +1,6 @@
 package db
 
-import (
-	"database/sql"
-
-	"github.com/Jason-Kng/Side-B/pkg/types"
-
-	_ "github.com/mattn/go-sqlite3"
-)
-
-type RecordStore struct {
-	db *sql.DB
-}
+import "github.com/Jason-Kng/Side-B/pkg/types"
 
 func (s *RecordStore) AddRecord(rec types.Record) error {
 	query := `INSERT INTO releases (id, artist_id, title, release_date, country, barcode) VALUES (?, ?, ?, ?, ?, ?)`
