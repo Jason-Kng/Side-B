@@ -6,7 +6,7 @@ type Record struct {
 	Title       string
 	ReleaseDate string
 	Country     string
-	Barcode     int
+	Barcode     string
 }
 
 type Item struct {

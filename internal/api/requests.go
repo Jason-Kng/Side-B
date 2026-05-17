@@ -78,6 +78,35 @@ func ReturnResponse(resp *http.Response) {
 	}
 }
 
+func ReturnRecord(resp *http.Response) (*types.Record, error) {
+	scanner := bufio.NewScanner(resp.Body)
+	var itemData types.Item
+	for scanner.Scan() {
+		if err := json.Unmarshal(scanner.Bytes(), &itemData); err != nil {
+			log.Printf("Failed to parse JSON: %v", err)
+		}
+	}
+
+	record := types.Record{
+		ID:          itemData.ID,
+		ArtistID:    itemData.Artists[0].ID,
+		Title:       itemData.Title,
+		ReleaseDate: itemData.Released,
+		Country:     itemData.Country,
+		Barcode:     itemData.Identifiers[1].Value,
+	}
+
+	// fmt.Println(itemData.ID)
+	// fmt.Println(itemData.Artists[0].ID)
+	// fmt.Println(itemData.Artists[0].Name)
+	// fmt.Println(itemData.Title)
+	// fmt.Println(itemData.Released)
+	// fmt.Println(itemData.Country)
+	// fmt.Println(itemData.Identifiers[1].Value)
+
+	return &record, nil
+}
+
 // func main() {
 // 	discogsToken := "mMlciUEsBDqynVcWsBzdrftPmgQvzwlkDyxokrsM"
 // 	req, err := http.NewRequest(http.MethodGet, "https://api.discogs.com/releases/37107642", nil)

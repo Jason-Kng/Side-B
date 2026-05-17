@@ -16,7 +16,7 @@ func NewRecordStore(db *sql.DB) *RecordStore {
 func (s *RecordStore) createReleasesTable() error {
 	query := `
 	CREATE TABLE IF NOT EXISTS releases (
-		id INTEGER PRIMARY KEY,
+		id INTEGER PRIMARY KEY NOT NULL,
 		artist_id VARCHAR(255),
 		title VARCHAR(255),
 		release_date TEXT,
@@ -26,7 +26,8 @@ func (s *RecordStore) createReleasesTable() error {
 
 	_, err := s.db.Exec(query)
 	if err != nil {
-		return fmt.Errorf("Failed to create Releases table: %v", err)
+		err := fmt.Errorf("failed to create Releases table: %v", err)
+		return err
 	}
 
 	return nil

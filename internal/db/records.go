@@ -2,8 +2,8 @@ package db
 
 import "github.com/Jason-Kng/Side-B/pkg/types"
 
-func (s *RecordStore) AddRecord(rec types.Record) error {
-	query := `INSERT INTO releases (id, artist_id, title, release_date, country, barcode) VALUES (?, ?, ?, ?, ?, ?)`
+func (s *RecordStore) AddRecord(rec *types.Record) error {
+	query := `INSERT INTO releases (id, artist_id, title, release_date, country, barcode) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT(id) DO UPDATE SET artist_id = excluded.artist_id, title = excluded.title, release_date = excluded.release_date, country = excluded.country, barcode = excluded.barcode`
 	_, err := s.db.Exec(query, rec.ID, rec.ArtistID, rec.Title, rec.ReleaseDate, rec.Country, rec.Barcode)
 	return err
 }

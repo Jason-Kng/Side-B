@@ -8,5 +8,4 @@ TO-DO:
   - [] Read something from the db
 
 - [] Make a basic bubble tea app that has the db in a table
-  
   ``` 

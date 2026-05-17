@@ -20,11 +20,29 @@ func main() {
 
 	usrToken := fmt.Sprintf("Discogs token=%v", discogsToken)
 
-	database, err := db.Conn("./Side-B.db")
+	conn, err := db.Conn("./Side-B.db")
 	if err != nil {
 		log.Fatalf("Could not initalize database: %v", err)
 	}
-	defer database.Close()
+	defer conn.Close()
+
+	store := db.NewRecordStore(conn)
+	if err := store.InitSchema(); err != nil {
+		log.Fatal(err)
+	}
+
+	// records, err := store.GetAllRecords()
+	// if err != nil {
+	// log.Printf("Error getting records: %v", err)
+	// }
+
+	// if len(records) == 0 {
+	// fmt.Println("The Records table is empty")
+	// } else {
+	// for _, value := range records {
+	// fmt.Println(value)
+	// }
+	// }
 
 	resp, err := api.RequestRelease(37107642, usrToken) // Requesting the album "On Guitar" by Masayoshi Takanaka
 	if err != nil {
@@ -33,25 +51,27 @@ func main() {
 
 	defer resp.Body.Close()
 
-	api.ReturnResponse(resp)
+	// api.ReturnResponse(resp)
+	record, err := api.ReturnRecord(resp)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	// err = db.AddRecord(database, newRecord)
-	// if err != nil {
-	// log.Printf("Error adding record: %v", err)
-	// } else {
-	// log.Println("Successfully added a record to the database!")
-	// }
+	err = store.AddRecord(record)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	// records, err := db.GetAllRecords(database)
-	// if err != nil {
-	// log.Printf("Error getting records: %v", err)
-	// }
+	dbOut, err := store.GetAllRecords()
+	if err != nil {
+		log.Printf("Error getting records: %v", err)
+	}
 
-	// fmt.Println("after GetAllRecords func")
-
-	// for _, value := range records {
-	// fmt.Println(value)
-	// }
-
-	// fmt.Println("Successfully connected to the database!")
+	if len(dbOut) == 0 {
+		fmt.Println("The Records table is empty")
+	} else {
+		for _, value := range dbOut {
+			fmt.Println(value)
+		}
+	}
 }
