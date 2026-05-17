@@ -16,11 +16,11 @@ type Item struct {
 	ResourceURL string `json:"resource_url"`
 	URI         string `json:"uri"`
 	Artists     []struct {
-		Name         string `json:"name"`
-		Anv          string `json:"anv"`
-		Join         string `json:"join"`
-		Role         string `json:"role"`
-		Tracks       string `json:"tracks"`
+		Name string `json:"name"`
+		Anv  string `json:"anv"`
+		Join string `json:"join"`
+		Role string `json:"role"`
+		// Tracks       string `json:"tracks"`
 		ID           int    `json:"id"`
 		ResourceURL  string `json:"resource_url"`
 		ThumbnailURL string `json:"thumbnail_url"`

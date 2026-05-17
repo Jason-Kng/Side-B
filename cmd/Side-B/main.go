@@ -20,12 +20,14 @@ func main() {
 
 	usrToken := fmt.Sprintf("Discogs token=%v", discogsToken)
 
+	// create a connection to the sql db
 	conn, err := db.Conn("./Side-B.db")
 	if err != nil {
 		log.Fatalf("Could not initalize database: %v", err)
 	}
 	defer conn.Close()
 
+	// initalize db if doesnt exist or update db schema if it exists
 	store := db.NewRecordStore(conn)
 	if err := store.InitSchema(); err != nil {
 		log.Fatal(err)
@@ -44,7 +46,13 @@ func main() {
 	// }
 	// }
 
-	resp, err := api.RequestRelease(37107642, usrToken) // Requesting the album "On Guitar" by Masayoshi Takanaka
+	var releaseIn int
+
+	fmt.Print("Enter a record Release ID: ")
+
+	fmt.Scan(&releaseIn)
+
+	resp, err := api.RequestRelease(releaseIn, usrToken) // Requesting the album "On Guitar" by Masayoshi Takanaka
 	if err != nil {
 		log.Fatal("Error requesting the API")
 	}

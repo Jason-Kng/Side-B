@@ -87,13 +87,22 @@ func ReturnRecord(resp *http.Response) (*types.Record, error) {
 		}
 	}
 
+	var barcodeNum string
+
+	for _, item := range itemData.Identifiers {
+		if item.Type == "Barcode" {
+			barcodeNum = item.Value
+			break
+		}
+	}
+
 	record := types.Record{
 		ID:          itemData.ID,
 		ArtistID:    itemData.Artists[0].ID,
 		Title:       itemData.Title,
 		ReleaseDate: itemData.Released,
 		Country:     itemData.Country,
-		Barcode:     itemData.Identifiers[1].Value,
+		Barcode:     barcodeNum,
 	}
 
 	// fmt.Println(itemData.ID)
