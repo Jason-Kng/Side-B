@@ -1,16 +1,15 @@
 package ui
 
 import (
+	"charm.land/bubbles/v2/help"
 	"charm.land/bubbles/v2/table"
 	tea "charm.land/bubbletea/v2"
 )
 
 type Model struct {
-	// store *db.RecordStore
-	// releases []types.Record
 	Table table.Model
-	// cursor int
-	// err    error
+	Help  help.Model
+	Keys  CustomKeyMap
 }
 
 func (m Model) Init() tea.Cmd {
