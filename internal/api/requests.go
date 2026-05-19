@@ -87,13 +87,14 @@ func ReturnRecord(resp *http.Response) (*types.Record, error) {
 		}
 	}
 
+	// printStruct(itemData)
 	var barcodeNum string
 
 	for _, item := range itemData.Identifiers {
-		if item.Type == "Barcode (Scanned)" {
+		if item.Type == "Barcode" && item.Description == "Scanned" {
 			barcodeNum = item.Value
 			break
-		} else if item.Type == "Barcode" {
+		} else if item.Type == "Barcode" && item.Description == "" {
 			barcodeNum = item.Value
 			break
 		}
