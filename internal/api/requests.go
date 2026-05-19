@@ -90,7 +90,10 @@ func ReturnRecord(resp *http.Response) (*types.Record, error) {
 	var barcodeNum string
 
 	for _, item := range itemData.Identifiers {
-		if item.Type == "Barcode" {
+		if item.Type == "Barcode (Scanned)" {
+			barcodeNum = item.Value
+			break
+		} else if item.Type == "Barcode" {
 			barcodeNum = item.Value
 			break
 		}
@@ -105,54 +108,5 @@ func ReturnRecord(resp *http.Response) (*types.Record, error) {
 		Barcode:     barcodeNum,
 	}
 
-	// fmt.Println(itemData.ID)
-	// fmt.Println(itemData.Artists[0].ID)
-	// fmt.Println(itemData.Artists[0].Name)
-	// fmt.Println(itemData.Title)
-	// fmt.Println(itemData.Released)
-	// fmt.Println(itemData.Country)
-	// fmt.Println(itemData.Identifiers[1].Value)
-
 	return &record, nil
 }
-
-// func main() {
-// 	discogsToken := "mMlciUEsBDqynVcWsBzdrftPmgQvzwlkDyxokrsM"
-// 	req, err := http.NewRequest(http.MethodGet, "https://api.discogs.com/releases/37107642", nil)
-// 	// req, err := http.NewRequest(http.MethodGet, "https://api.discogs.com/oauth/identity", nil)
-// 	// req, err := http.NewRequest(http.MethodGet, "https://api.discogs.com/users/JKing05/collection/folders/0/releases", nil)
-// 	if err != nil {
-// 		log.Fatal(err)
-// 	}
-//
-// 	token := fmt.Sprintf("Discogs token=%v", discogsToken)
-//
-// 	req.Header.Add("User-Agent", "Side-BTerminalDB/0.1")
-// 	req.Header.Add("Authorization", token)
-//
-// 	client := &http.Client{Timeout: 10 * time.Second}
-// 	resp, err := client.Do(req)
-// 	if err != nil {
-// 		log.Fatal(err)
-// 	}
-//
-// 	defer resp.Body.Close() // Always close the body
-//
-// 	scanner := bufio.NewScanner(resp.Body)
-// 	for scanner.Scan() {
-// 		var itemData types.Item
-// 		// var folderData types.Folder
-// 		// var userData types.User
-// 		if err := json.Unmarshal(scanner.Bytes(), &itemData); err != nil {
-// 			log.Printf("Failed to parse JSON: %v", err)
-// 		}
-//
-// 		// for _, release := range data.Releases {
-// 		// fmt.Printf(("Release: %v\n"), release.BasicInformation.Title)
-// 		// }
-// 		printStruct(itemData)
-// 		// printFolderStruct(folderData)
-// 		// printUserStruct(userData)
-// 		// fmt.Printf(scanner.Text())
-// 	}
-// }
