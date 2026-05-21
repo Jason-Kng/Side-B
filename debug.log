@@ -397,3 +397,27 @@
 2026/05/21 17:42:01 [INFO] Deleting record with ID: 9731296
 2026/05/21 17:42:01 [INFO] Record deleted: 9731296
 2026/05/21 17:42:34 [INFO] Quitting
+2026/05/21 17:45:22 [INFO] Quitting
+2026/05/21 17:56:26 [INFO] Trying to add a record
+2026/05/21 17:56:28 [INFO] Adding record with ID: 9731296
+2026/05/21 17:56:29 [INFO] Artists count: 1
+2026/05/21 17:56:29 [INFO] First artist ID: 137880
+2026/05/21 17:56:29 [INFO] Added Record Cleanly
+2026/05/21 17:56:29 [INFO] Record added: 9731296
+2026/05/21 17:56:35 [INFO] Trying to delete a record
+2026/05/21 17:56:37 [INFO] Deleting record with ID: 9731296
+2026/05/21 17:56:37 [INFO] Record deleted: 9731296
+2026/05/21 17:56:39 [INFO] Quitting
+2026/05/21 17:57:28 [INFO] Trying to add a record
+2026/05/21 17:57:29 [INFO] Adding record with ID: 9731296
+2026/05/21 17:57:30 [INFO] Artists count: 1
+2026/05/21 17:57:30 [INFO] First artist ID: 137880
+2026/05/21 17:57:30 [INFO] Added Record Cleanly
+2026/05/21 17:57:30 [INFO] Record added: 9731296
+2026/05/21 17:58:22 [INFO] Trying to add a record
+2026/05/21 17:58:24 [INFO] Adding record with ID: 242785
+2026/05/21 17:58:24 [INFO] Artists count: 3
+2026/05/21 17:58:24 [INFO] First artist ID: 25058
+2026/05/21 17:58:24 [INFO] Added Record Cleanly
+2026/05/21 17:58:24 [INFO] Record added: 242785
+2026/05/21 17:58:55 [INFO] Quitting

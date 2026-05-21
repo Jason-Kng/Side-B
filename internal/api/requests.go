@@ -1,16 +1,20 @@
 package api
 
 import (
-	"bufio"
 	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/Jason-Kng/Side-B/pkg/logger"
 	"github.com/Jason-Kng/Side-B/pkg/types"
 )
+
+func formatBarcode(barcode string) string {
+	fmtBarcode := strings.ReplaceAll(barcode, " ", "")
+	return fmtBarcode
+}
 
 func RequestRelease(releaseID int, usrToken string) (*http.Response, error) {
 	url := fmt.Sprintf("https://api.discogs.com/releases/%v", releaseID)
@@ -31,24 +35,6 @@ func RequestRelease(releaseID int, usrToken string) (*http.Response, error) {
 	return resp, nil
 }
 
-func ReturnResponse(resp *http.Response) {
-	scanner := bufio.NewScanner(resp.Body)
-	for scanner.Scan() {
-		var itemData types.Item
-		// var folderData types.Folder
-		// var userData types.User
-
-		if err := json.Unmarshal(scanner.Bytes(), &itemData); err != nil {
-			log.Printf("Failed to parse JSON: %v", err)
-		}
-
-		// printStruct(itemData)
-		// printFolderStruct(folderData)
-		// printUserStruct(userData)
-		// fmt.Printf(scanner.Text())
-	}
-}
-
 func ReturnRecord(resp *http.Response) (*types.Record, error) {
 	// scanner := bufio.NewScanner(resp.Body)
 	var itemData types.Item
@@ -64,8 +50,8 @@ func ReturnRecord(resp *http.Response) (*types.Record, error) {
 		if item.Type == "Barcode" && item.Description == "Scanned" {
 			barcodeNum = item.Value
 			break
-		} else if item.Type == "Barcode" && item.Description == "" {
-			barcodeNum = item.Value
+		} else if item.Type == "Barcode" {
+			barcodeNum = formatBarcode(item.Value)
 			break
 		}
 	}
