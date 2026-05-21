@@ -8,38 +8,9 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/Jason-Kng/Side-B/pkg/logger"
 	"github.com/Jason-Kng/Side-B/pkg/types"
 )
-
-func printStruct(data types.Item) {
-	// MarshalIndent adds whitespace and newlines
-	b, err := json.MarshalIndent(data, "", "  ")
-	if err != nil {
-		fmt.Println("Error printing struct:", err)
-		return
-	}
-	fmt.Println(string(b))
-}
-
-func printUserStruct(data types.User) {
-	// MarshalIndent adds whitespace and newlines
-	b, err := json.MarshalIndent(data, "", "  ")
-	if err != nil {
-		fmt.Println("Error printing struct:", err)
-		return
-	}
-	fmt.Println(string(b))
-}
-
-func printFolderStruct(data types.Folder) {
-	// MarshalIndent adds whitespace and newlines
-	b, err := json.MarshalIndent(data, "", "  ")
-	if err != nil {
-		fmt.Println("Error printing struct:", err)
-		return
-	}
-	fmt.Println(string(b))
-}
 
 func RequestRelease(releaseID int, usrToken string) (*http.Response, error) {
 	url := fmt.Sprintf("https://api.discogs.com/releases/%v", releaseID)
@@ -71,7 +42,7 @@ func ReturnResponse(resp *http.Response) {
 			log.Printf("Failed to parse JSON: %v", err)
 		}
 
-		printStruct(itemData)
+		// printStruct(itemData)
 		// printFolderStruct(folderData)
 		// printUserStruct(userData)
 		// fmt.Printf(scanner.Text())
@@ -79,15 +50,14 @@ func ReturnResponse(resp *http.Response) {
 }
 
 func ReturnRecord(resp *http.Response) (*types.Record, error) {
-	scanner := bufio.NewScanner(resp.Body)
+	// scanner := bufio.NewScanner(resp.Body)
 	var itemData types.Item
-	for scanner.Scan() {
-		if err := json.Unmarshal(scanner.Bytes(), &itemData); err != nil {
-			log.Printf("Failed to parse JSON: %v", err)
-		}
+	err := json.NewDecoder(resp.Body).Decode(&itemData)
+	if err != nil {
+		logger.Error("Decode Error %w", err)
+		return nil, fmt.Errorf("decode error: %w", err)
 	}
 
-	// printStruct(itemData)
 	var barcodeNum string
 
 	for _, item := range itemData.Identifiers {
@@ -100,9 +70,23 @@ func ReturnRecord(resp *http.Response) (*types.Record, error) {
 		}
 	}
 
+	logger.Info("Artists count: %d", len(itemData.Artists))
+	if len(itemData.Artists) > 0 {
+		logger.Info("First artist ID: %d", itemData.Artists[0].ID)
+	}
+
+	var artistID int
+
+	if len(itemData.Artists) > 0 {
+		artistID = itemData.Artists[0].ID
+	} else {
+		artistID = 0
+		logger.Error("No artist found for release %d", itemData.ID)
+	}
+
 	record := types.Record{
 		ID:          itemData.ID,
-		ArtistID:    itemData.Artists[0].ID,
+		ArtistID:    artistID,
 		Title:       itemData.Title,
 		ReleaseDate: itemData.Released,
 		Country:     itemData.Country,

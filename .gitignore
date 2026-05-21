@@ -2,7 +2,7 @@
 Side-B
 Side-B.exe
 bin/
-*.log
+debug.log
 
 # Databases
 *.db

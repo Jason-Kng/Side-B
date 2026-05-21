@@ -1,6 +1,7 @@
 package ui
 
 import (
+	"fmt"
 	"strconv"
 
 	"charm.land/bubbles/v2/textinput"
@@ -13,6 +14,10 @@ import (
 
 type RecordAddedMsg struct {
 	ReleaseID int
+}
+
+type ErrorMsg struct {
+	Err error
 }
 
 type AddModel struct {
@@ -53,7 +58,12 @@ func (m AddModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				}
 			}
 
-			releaseID, _ := strconv.Atoi(m.textInput.Value())
+			releaseID, err := strconv.Atoi(m.textInput.Value())
+			if err != nil {
+				return m, func() tea.Msg {
+					return ErrorMsg{Err: fmt.Errorf("invalid ID: %w", err)}
+				}
+			}
 
 			return m, func() tea.Msg {
 				// return RecordAddedMsg{ReleaseID: releaseID}

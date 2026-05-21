@@ -25,10 +25,10 @@ func Close() error {
 	return logFile.Close()
 }
 
-func Info(msg string) {
-	log.Println("[INFO]", msg)
+func Info(msg string, args ...any) {
+	log.Printf("[INFO] "+msg, args...)
 }
 
-func Error(msg string) {
-	log.Println("[ERROR]", msg)
+func Error(msg string, args ...any) {
+	log.Printf("[ERROR] "+msg, args...)
 }

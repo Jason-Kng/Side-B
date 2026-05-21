@@ -1,8 +1,6 @@
 package ui
 
 import (
-	"fmt"
-
 	"charm.land/bubbles/v2/key"
 	tea "charm.land/bubbletea/v2"
 	"github.com/Jason-Kng/Side-B/pkg/logger"
@@ -10,45 +8,53 @@ import (
 
 func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	var cmd tea.Cmd
-	// m.Table = BuildTable(m.Store)
-
-	// if added, ok := msg.(RecordAddedMsg); ok {
-	// 	m.showPopup = false
-	// 	if added.ReleaseID == 0 {
-	// 		return m, nil
-	// 	}
-	// 	return m, func() tea.Msg {
-	// 		logger.Info(fmt.Sprintf("Starting addRecord func"))
-	// 		msg = addRecord(m.UsrToken, added.ReleaseID, m.Store)
-	// 		return msg
-	// 	}
-	// }
 
 	switch msg := msg.(type) {
+	case ErrorMsg:
+		m.popupMode = PopupNone
+		m.lastError = msg.Err
+
+		return m, nil
 	case RecordAddedMsg:
-		logger.Info(fmt.Sprintf("Record added: %d\n", msg.ReleaseID))
-		m.showPopup = false
+		logger.Info("Record added: %d\n", msg.ReleaseID)
+		m.popupMode = PopupNone
 		m.Table = BuildTable(m.Store)
-		return m, cmd
+		return m, nil
+
+	case RecordDeletedMsg:
+		logger.Info("Record deleted: %d\n", msg.ReleaseID)
+		m.popupMode = PopupNone
+		m.Table = BuildTable(m.Store)
+		return m, nil
 
 	case tea.KeyMsg:
 		switch {
 
 		case key.Matches(msg, m.Keys.Quit):
-			logger.Info(fmt.Sprintf("Quitting"))
+			logger.Info("Quitting")
 			return m, tea.Quit
 
 		case key.Matches(msg, m.Keys.Add):
-			logger.Info(fmt.Sprintf("Trying to add a record"))
-			m.showPopup = true
+			logger.Info("Trying to add a record")
+			m.popupMode = PopupAdd
 			m.addPopup = initAdd(m.UsrToken, m.Store)
+			return m, nil
+		case key.Matches(msg, m.Keys.Delete):
+			logger.Info("Trying to delete a record")
+			m.popupMode = PopupDel
+			m.delPopup = initDel(m.Store)
 			return m, nil
 		}
 	}
 
-	if m.showPopup {
+	switch m.popupMode {
+	case PopupAdd:
 		popup, cmd := m.addPopup.Update(msg)
 		m.addPopup = popup.(AddModel)
+		return m, cmd
+	case PopupDel:
+		popup, cmd := m.delPopup.Update(msg)
+		m.delPopup = popup.(DeleteModel)
 		return m, cmd
 	}
 

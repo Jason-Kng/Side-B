@@ -15,10 +15,20 @@ type Model struct {
 	Store    *db.RecordStore
 	UsrToken string
 
-	showPopup bool
+	popupMode PopupMode
 	addPopup  AddModel
-	// lastError error
+	delPopup  DeleteModel
+
+	lastError error
 }
+
+type PopupMode int
+
+const (
+	PopupNone PopupMode = iota
+	PopupAdd
+	PopupDel
+)
 
 func (m Model) Init() tea.Cmd {
 	return nil

@@ -5,12 +5,14 @@ import (
 )
 
 func (m Model) View() tea.View {
-	var content string
-	if m.showPopup {
-		// return m.addPopup.View()
-		content = baseStyle.Render(m.Table.View()) + "\n " + m.Help.View(m.Keys) + "\n" + m.addPopup.headerView() + "\n" + m.addPopup.textInput.View()
-	} else {
-		content = baseStyle.Render(m.Table.View()) + "\n " + m.Help.View(m.Keys)
+	content := baseStyle.Render(m.Table.View()) + "\n " + m.Help.View(m.Keys)
+
+	switch m.popupMode {
+	case PopupAdd:
+
+		content += "\n" + m.addPopup.headerView() + "\n" + m.addPopup.textInput.View()
+	case PopupDel:
+		content += "\n" + m.delPopup.headerView() + "\n" + m.delPopup.textInput.View()
 	}
 	v := tea.NewView(content + "\n")
 	v.AltScreen = true

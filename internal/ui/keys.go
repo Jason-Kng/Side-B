@@ -7,13 +7,14 @@ import (
 
 type CustomKeyMap struct {
 	table.KeyMap
-	Quit key.Binding
-	Add  key.Binding
+	Quit   key.Binding
+	Add    key.Binding
+	Delete key.Binding
 }
 
 // ShortHelp includes the quit binding
 func (km CustomKeyMap) ShortHelp() []key.Binding {
-	return []key.Binding{km.LineUp, km.LineDown, km.Quit, km.Add}
+	return []key.Binding{km.LineUp, km.LineDown, km.Quit, km.Add, km.Delete}
 }
 
 // FullHelp includes the quit binding in the full help
@@ -21,6 +22,6 @@ func (km CustomKeyMap) FullHelp() [][]key.Binding {
 	return [][]key.Binding{
 		{km.LineUp, km.LineDown, km.GotoTop, km.GotoBottom},
 		{km.PageUp, km.PageDown, km.HalfPageUp, km.HalfPageDown},
-		{km.Quit, km.Add},
+		{km.Quit, km.Add, km.Delete},
 	}
 }
