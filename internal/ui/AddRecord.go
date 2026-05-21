@@ -47,6 +47,12 @@ func (m AddModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				return RecordAddedMsg{ReleaseID: 0}
 			}
 		case "enter":
+			if m.textInput.Value() == "" {
+				return m, func() tea.Msg {
+					return RecordAddedMsg{ReleaseID: 0}
+				}
+			}
+
 			releaseID, _ := strconv.Atoi(m.textInput.Value())
 
 			return m, func() tea.Msg {

@@ -10,12 +10,12 @@ import (
 )
 
 var columns = []table.Column{
-	{Title: "Record ID", Width: 20},
-	{Title: "Artist ID", Width: 20},
-	{Title: "Album Title", Width: 25},
-	{Title: "Release Date", Width: 20},
-	{Title: "Country", Width: 20},
-	{Title: "Barcode ID", Width: 25},
+	{Title: "Record ID", Width: 10},
+	{Title: "Artist ID", Width: 10},
+	{Title: "Album Title", Width: 15},
+	{Title: "Release Date", Width: 12},
+	{Title: "Country", Width: 10},
+	{Title: "Barcode ID", Width: 15},
 }
 
 // Get all records
@@ -43,7 +43,7 @@ func BuildTable(store *db.RecordStore) table.Model {
 		table.WithRows(rows),
 		table.WithFocused(true),
 		table.WithHeight(20),
-		table.WithWidth(200),
+		table.WithWidth(80),
 	)
 
 	s := table.DefaultStyles()
