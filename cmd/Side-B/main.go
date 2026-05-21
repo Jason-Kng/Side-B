@@ -11,18 +11,21 @@ import (
 	tea "charm.land/bubbletea/v2"
 	"github.com/Jason-Kng/Side-B/internal/db"
 	"github.com/Jason-Kng/Side-B/internal/ui"
+	"github.com/Jason-Kng/Side-B/pkg/logger"
 	"github.com/joho/godotenv"
 )
 
 func main() {
+	logger.Init()
+	defer logger.Close()
 	err := godotenv.Load()
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}
 
-	// discogsToken := os.Getenv("DISCOGS_TOKEN")
+	discogsToken := os.Getenv("DISCOGS_TOKEN")
 
-	// usrToken := fmt.Sprintf("Discogs token=%v", discogsToken)
+	usrToken := fmt.Sprintf("Discogs token=%v", discogsToken)
 
 	// create a connection to the sql db
 	conn, err := db.Conn("./Side-B.db")
@@ -67,6 +70,9 @@ func main() {
 		Table: ui.BuildTable(store),
 		Help:  help.New(),
 		Keys:  customKM,
+
+		Store:    store,
+		UsrToken: usrToken,
 	}
 	if _, err := tea.NewProgram(m).Run(); err != nil {
 		fmt.Println("Error running program:", err)

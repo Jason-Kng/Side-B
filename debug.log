@@ -1,0 +1,261 @@
+2026/05/20 18:41:54 [INFO] Quitting
+2026/05/20 18:42:18 [INFO] Trying to add a record
+2026/05/20 18:42:32 [INFO] Quitting
+2026/05/20 18:47:27 [INFO] Trying to add a record
+2026/05/20 18:47:39 [INFO] Quitting
+2026/05/20 18:47:44 [INFO] Trying to add a record
+2026/05/20 18:47:48 [INFO] Quitting
+2026/05/20 18:47:55 [INFO] Trying to add a record
+2026/05/20 18:53:26 [INFO] Quitting
+2026/05/20 18:53:33 [INFO] Trying to add a record
+2026/05/20 18:53:41 [INFO] Quitting
+2026/05/20 18:53:44 [INFO] Trying to add a record
+2026/05/20 18:54:45 [INFO] Quitting
+2026/05/20 18:54:48 [INFO] Trying to add a record
+2026/05/20 18:54:54 [INFO] Quitting
+2026/05/20 18:56:03 [INFO] Trying to add a record
+2026/05/20 18:56:05 [INFO] Pressed enter here is the value in err: strconv.Atoi: parsing "\x1b[37m> \x1b[m32646423                  ": invalid syntax
+2026/05/20 18:56:11 [INFO] Quitting
+2026/05/20 18:58:25 [INFO] Trying to add a record
+2026/05/20 18:58:27 [INFO] Pressed enter here is the value in err: strconv.Atoi: parsing "\x1b[37m> \x1b[m12193022\x1b[7;37m \x1b[m                 ": invalid syntax
+2026/05/20 18:59:08 [INFO] Quitting
+2026/05/20 18:59:17 [INFO] Trying to add a record
+2026/05/20 18:59:19 [INFO] Starting addRecord func
+2026/05/20 18:59:19 [INFO] Adding record with ID: 12193022
+2026/05/20 18:59:20 [INFO] Added Record Cleanly
+2026/05/20 18:59:20 [INFO] Starting addRecord func
+2026/05/20 18:59:20 [INFO] Adding record with ID: 12193022
+2026/05/20 18:59:20 [INFO] Added Record Cleanly
+2026/05/20 18:59:20 [INFO] Starting addRecord func
+2026/05/20 18:59:20 [INFO] Adding record with ID: 12193022
+2026/05/20 18:59:20 [INFO] Added Record Cleanly
+2026/05/20 18:59:20 [INFO] Starting addRecord func
+2026/05/20 18:59:20 [INFO] Adding record with ID: 12193022
+2026/05/20 18:59:21 [INFO] Added Record Cleanly
+2026/05/20 18:59:21 [INFO] Starting addRecord func
+2026/05/20 18:59:21 [INFO] Adding record with ID: 12193022
+2026/05/20 18:59:21 [INFO] Added Record Cleanly
+2026/05/20 18:59:21 [INFO] Starting addRecord func
+2026/05/20 18:59:21 [INFO] Adding record with ID: 12193022
+2026/05/20 18:59:21 [INFO] Added Record Cleanly
+2026/05/20 18:59:21 [INFO] Starting addRecord func
+2026/05/20 18:59:21 [INFO] Adding record with ID: 12193022
+2026/05/20 18:59:21 [INFO] Added Record Cleanly
+2026/05/20 18:59:21 [INFO] Starting addRecord func
+2026/05/20 18:59:21 [INFO] Adding record with ID: 12193022
+2026/05/20 18:59:21 [INFO] Added Record Cleanly
+2026/05/20 18:59:21 [INFO] Starting addRecord func
+2026/05/20 18:59:21 [INFO] Adding record with ID: 12193022
+2026/05/20 18:59:22 [INFO] Added Record Cleanly
+2026/05/20 18:59:22 [INFO] Starting addRecord func
+2026/05/20 18:59:22 [INFO] Adding record with ID: 12193022
+2026/05/20 18:59:22 [INFO] Added Record Cleanly
+2026/05/20 18:59:22 [INFO] Starting addRecord func
+2026/05/20 18:59:22 [INFO] Adding record with ID: 12193022
+2026/05/20 18:59:22 [INFO] Added Record Cleanly
+2026/05/20 18:59:22 [INFO] Starting addRecord func
+2026/05/20 18:59:22 [INFO] Adding record with ID: 12193022
+2026/05/20 18:59:22 [INFO] Added Record Cleanly
+2026/05/20 18:59:22 [INFO] Starting addRecord func
+2026/05/20 18:59:22 [INFO] Adding record with ID: 12193022
+2026/05/20 18:59:23 [INFO] Added Record Cleanly
+2026/05/20 18:59:23 [INFO] Starting addRecord func
+2026/05/20 18:59:23 [INFO] Adding record with ID: 12193022
+2026/05/20 18:59:23 [INFO] Added Record Cleanly
+2026/05/20 18:59:23 [INFO] Starting addRecord func
+2026/05/20 18:59:23 [INFO] Adding record with ID: 12193022
+2026/05/20 18:59:23 [INFO] Added Record Cleanly
+2026/05/20 18:59:23 [INFO] Starting addRecord func
+2026/05/20 18:59:23 [INFO] Adding record with ID: 12193022
+2026/05/20 18:59:23 [INFO] Added Record Cleanly
+2026/05/20 18:59:23 [INFO] Starting addRecord func
+2026/05/20 18:59:23 [INFO] Adding record with ID: 12193022
+2026/05/20 18:59:23 [INFO] Added Record Cleanly
+2026/05/20 18:59:23 [INFO] Starting addRecord func
+2026/05/20 18:59:23 [INFO] Adding record with ID: 12193022
+2026/05/20 18:59:24 [INFO] Added Record Cleanly
+2026/05/20 18:59:24 [INFO] Starting addRecord func
+2026/05/20 18:59:24 [INFO] Adding record with ID: 12193022
+2026/05/20 18:59:24 [INFO] Added Record Cleanly
+2026/05/20 18:59:24 [INFO] Starting addRecord func
+2026/05/20 18:59:24 [INFO] Adding record with ID: 12193022
+2026/05/20 18:59:24 [INFO] Added Record Cleanly
+2026/05/20 18:59:24 [INFO] Starting addRecord func
+2026/05/20 18:59:24 [INFO] Adding record with ID: 12193022
+2026/05/20 18:59:24 [INFO] Added Record Cleanly
+2026/05/20 18:59:24 [INFO] Starting addRecord func
+2026/05/20 18:59:24 [INFO] Adding record with ID: 12193022
+2026/05/20 18:59:25 [INFO] Added Record Cleanly
+2026/05/20 18:59:25 [INFO] Starting addRecord func
+2026/05/20 18:59:25 [INFO] Adding record with ID: 12193022
+2026/05/20 18:59:25 [INFO] Added Record Cleanly
+2026/05/20 18:59:25 [INFO] Starting addRecord func
+2026/05/20 18:59:25 [INFO] Adding record with ID: 12193022
+2026/05/20 18:59:25 [INFO] Added Record Cleanly
+2026/05/20 18:59:25 [INFO] Starting addRecord func
+2026/05/20 18:59:25 [INFO] Adding record with ID: 12193022
+2026/05/20 18:59:25 [INFO] Added Record Cleanly
+2026/05/20 18:59:25 [INFO] Starting addRecord func
+2026/05/20 18:59:25 [INFO] Adding record with ID: 12193022
+2026/05/20 18:59:25 [INFO] Added Record Cleanly
+2026/05/20 18:59:25 [INFO] Starting addRecord func
+2026/05/20 18:59:25 [INFO] Adding record with ID: 12193022
+2026/05/20 18:59:26 [INFO] Quitting
+2026/05/20 19:02:13 [INFO] Trying to add a record
+2026/05/20 19:02:15 [INFO] Starting addRecord func
+2026/05/20 19:02:15 [INFO] Adding record with ID: 12193022
+2026/05/20 19:02:16 [INFO] Added Record Cleanly
+2026/05/20 19:02:16 [INFO] Starting addRecord func
+2026/05/20 19:02:16 [INFO] Adding record with ID: 12193022
+2026/05/20 19:02:16 [INFO] Added Record Cleanly
+2026/05/20 19:02:16 [INFO] Starting addRecord func
+2026/05/20 19:02:16 [INFO] Adding record with ID: 12193022
+2026/05/20 19:02:16 [INFO] Added Record Cleanly
+2026/05/20 19:02:16 [INFO] Starting addRecord func
+2026/05/20 19:02:16 [INFO] Adding record with ID: 12193022
+2026/05/20 19:02:16 [INFO] Quitting
+2026/05/20 19:07:43 [INFO] Quitting
+2026/05/20 19:07:57 [INFO] Trying to add a record
+2026/05/20 19:07:59 [INFO] Starting addRecord func
+2026/05/20 19:07:59 [INFO] Adding record with ID: 12193022
+2026/05/20 19:07:59 [INFO] Added Record Cleanly
+2026/05/20 19:07:59 [INFO] Starting addRecord func
+2026/05/20 19:07:59 [INFO] Adding record with ID: 12193022
+2026/05/20 19:07:59 [INFO] Added Record Cleanly
+2026/05/20 19:07:59 [INFO] Starting addRecord func
+2026/05/20 19:07:59 [INFO] Adding record with ID: 12193022
+2026/05/20 19:07:59 [INFO] Added Record Cleanly
+2026/05/20 19:07:59 [INFO] Starting addRecord func
+2026/05/20 19:07:59 [INFO] Adding record with ID: 12193022
+2026/05/20 19:08:00 [INFO] Added Record Cleanly
+2026/05/20 19:08:00 [INFO] Starting addRecord func
+2026/05/20 19:08:00 [INFO] Adding record with ID: 12193022
+2026/05/20 19:08:00 [INFO] Added Record Cleanly
+2026/05/20 19:08:00 [INFO] Starting addRecord func
+2026/05/20 19:08:00 [INFO] Adding record with ID: 12193022
+2026/05/20 19:08:00 [INFO] Added Record Cleanly
+2026/05/20 19:08:00 [INFO] Starting addRecord func
+2026/05/20 19:08:00 [INFO] Adding record with ID: 12193022
+2026/05/20 19:08:00 [INFO] Added Record Cleanly
+2026/05/20 19:08:00 [INFO] Starting addRecord func
+2026/05/20 19:08:00 [INFO] Adding record with ID: 12193022
+2026/05/20 19:08:01 [INFO] Added Record Cleanly
+2026/05/20 19:08:01 [INFO] Starting addRecord func
+2026/05/20 19:08:01 [INFO] Adding record with ID: 12193022
+2026/05/20 19:08:01 [INFO] Added Record Cleanly
+2026/05/20 19:08:01 [INFO] Starting addRecord func
+2026/05/20 19:08:01 [INFO] Adding record with ID: 12193022
+2026/05/20 19:08:01 [INFO] Added Record Cleanly
+2026/05/20 19:08:01 [INFO] Starting addRecord func
+2026/05/20 19:08:01 [INFO] Adding record with ID: 12193022
+2026/05/20 19:08:01 [INFO] Quitting
+2026/05/20 19:09:10 [INFO] Quitting
+2026/05/20 19:09:13 [INFO] Quitting
+2026/05/20 19:09:24 [INFO] Trying to add a record
+2026/05/20 19:09:26 [INFO] Starting addRecord func
+2026/05/20 19:09:26 [INFO] Adding record with ID: 12193022
+2026/05/20 19:09:26 [INFO] Added Record Cleanly
+2026/05/20 19:09:26 [INFO] Starting addRecord func
+2026/05/20 19:09:26 [INFO] Adding record with ID: 12193022
+2026/05/20 19:09:26 [INFO] Added Record Cleanly
+2026/05/20 19:09:26 [INFO] Starting addRecord func
+2026/05/20 19:09:26 [INFO] Adding record with ID: 12193022
+2026/05/20 19:09:27 [INFO] Added Record Cleanly
+2026/05/20 19:09:27 [INFO] Starting addRecord func
+2026/05/20 19:09:27 [INFO] Adding record with ID: 12193022
+2026/05/20 19:09:27 [INFO] Added Record Cleanly
+2026/05/20 19:09:27 [INFO] Starting addRecord func
+2026/05/20 19:09:27 [INFO] Adding record with ID: 12193022
+2026/05/20 19:09:27 [INFO] Added Record Cleanly
+2026/05/20 19:09:27 [INFO] Starting addRecord func
+2026/05/20 19:09:27 [INFO] Adding record with ID: 12193022
+2026/05/20 19:09:27 [INFO] Added Record Cleanly
+2026/05/20 19:09:27 [INFO] Starting addRecord func
+2026/05/20 19:09:27 [INFO] Adding record with ID: 12193022
+2026/05/20 19:09:28 [INFO] Added Record Cleanly
+2026/05/20 19:09:28 [INFO] Starting addRecord func
+2026/05/20 19:09:28 [INFO] Adding record with ID: 12193022
+2026/05/20 19:09:28 [INFO] Added Record Cleanly
+2026/05/20 19:09:28 [INFO] Starting addRecord func
+2026/05/20 19:09:28 [INFO] Adding record with ID: 12193022
+2026/05/20 19:09:28 [INFO] Added Record Cleanly
+2026/05/20 19:09:28 [INFO] Starting addRecord func
+2026/05/20 19:09:28 [INFO] Adding record with ID: 12193022
+2026/05/20 19:09:28 [INFO] Quitting
+2026/05/20 19:10:42 [INFO] Trying to add a record
+2026/05/20 19:10:43 [INFO] Starting addRecord func
+2026/05/20 19:10:43 [INFO] Adding record with ID: 12193022
+2026/05/20 19:10:44 [INFO] Added Record Cleanly
+2026/05/20 19:11:22 [INFO] Trying to add a record
+2026/05/20 19:11:25 [INFO] Starting addRecord func
+2026/05/20 19:11:25 [INFO] Adding record with ID: 1587168
+2026/05/20 19:11:25 [INFO] Added Record Cleanly
+2026/05/20 19:11:30 [INFO] Quitting
+2026/05/20 19:11:35 [INFO] Trying to add a record
+2026/05/20 19:13:24 [INFO] Starting addRecord func
+2026/05/20 19:13:24 [INFO] Adding record with ID: 27386013
+2026/05/20 19:13:25 [INFO] Added Record Cleanly
+2026/05/20 19:20:00 [INFO] Quitting
+2026/05/20 19:20:10 [INFO] Quitting
+2026/05/20 19:27:03 [INFO] Quitting
+2026/05/20 19:27:06 [INFO] Trying to add a record
+2026/05/20 19:27:09 [INFO] Quitting
+2026/05/20 19:29:22 [INFO] Quitting
+2026/05/20 19:29:45 [INFO] Trying to add a record
+2026/05/20 19:30:19 [INFO] Trying to add a record
+2026/05/20 19:30:21 [INFO] Starting addRecord func
+2026/05/20 19:30:21 [INFO] Adding record with ID: 21930484
+2026/05/20 19:30:21 [INFO] Added Record Cleanly
+2026/05/20 19:31:03 [INFO] Quitting
+2026/05/20 19:31:35 [INFO] Quitting
+2026/05/20 19:31:41 [INFO] Quitting
+2026/05/20 19:31:55 [INFO] Trying to add a record
+2026/05/20 19:31:58 [INFO] Starting addRecord func
+2026/05/20 19:31:58 [INFO] Adding record with ID: 28525018
+2026/05/20 19:31:59 [INFO] Added Record Cleanly
+2026/05/20 19:32:29 [INFO] Quitting
+2026/05/20 19:32:41 [INFO] Trying to add a record
+2026/05/20 19:32:46 [INFO] Quitting
+2026/05/20 19:34:31 [INFO] Trying to add a record
+2026/05/20 19:34:33 [INFO] Starting addRecord func
+2026/05/20 19:34:33 [INFO] Adding record with ID: 24672455
+2026/05/20 19:34:33 [INFO] Added Record Cleanly
+2026/05/20 19:34:43 [INFO] Quitting
+2026/05/20 19:38:42 [INFO] Quitting
+2026/05/20 19:39:17 [INFO] Trying to add a record
+2026/05/20 19:39:18 [INFO] Starting addRecord func
+2026/05/20 19:39:18 [INFO] Adding record with ID: 28423303
+2026/05/20 19:39:19 [INFO] Added Record Cleanly
+2026/05/20 19:41:09 [INFO] Quitting
+2026/05/20 19:49:35 [INFO] Trying to add a record
+2026/05/20 19:49:55 [INFO] Adding record with ID: 30003355
+2026/05/20 19:49:56 [INFO] Added Record Cleanly
+2026/05/20 19:49:56 [INFO] Record added: 0
+
+2026/05/20 19:50:04 [INFO] Record added: 0
+
+2026/05/20 19:50:07 [INFO] Record added: 0
+
+2026/05/20 19:50:08 [INFO] Record added: 0
+
+2026/05/20 19:50:08 [INFO] Record added: 0
+
+2026/05/20 19:50:10 [INFO] Quitting
+2026/05/20 19:53:08 [INFO] Trying to add a record
+2026/05/20 19:53:10 [INFO] Adding record with ID: 9731296
+2026/05/20 19:55:06 [INFO] Trying to add a record
+2026/05/20 19:55:08 [INFO] Adding record with ID: 9731296
+2026/05/20 19:56:45 [INFO] Trying to add a record
+2026/05/20 19:56:54 [INFO] Adding record with ID: 9731296
+2026/05/20 19:57:54 [INFO] Trying to add a record
+2026/05/20 19:57:56 [INFO] Adding record with ID: 27260970
+2026/05/20 19:57:56 [INFO] Added Record Cleanly
+2026/05/20 19:57:56 [INFO] Record added: 0
+
+2026/05/20 19:58:04 [INFO] Quitting
+2026/05/20 20:02:01 [INFO] Trying to add a record
+2026/05/20 20:02:03 [INFO] Adding record with ID: 5614556
+2026/05/20 20:02:03 [INFO] Added Record Cleanly
+2026/05/20 20:02:03 [INFO] Record added: 0
+
+2026/05/20 20:02:22 [INFO] Quitting
