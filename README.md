@@ -13,7 +13,7 @@ What am I using to make this?
 ** WARNING: This project is very early days and its very bad right now lol **
 #### Build From Source
 ```sh
-git clone https://github.com/Jason-Kng/Side-B.git && cd Side-B && go build ./cmd/Side-B/main.go -o Side-B 
+git clone https://github.com/Jason-Kng/Side-B.git && cd Side-B && go build -o Side-B ./cmd/Side-B/main.go
 ```
 Make sure to make a .env file and store your discogs api key
 touch .env && echo "DISCOGS_TOKEN=enter_your_discogs_token">> .env
