@@ -15,3 +15,5 @@ What am I using to make this?
 ```sh
 git clone https://github.com/Jason-Kng/Side-B.git && cd Side-B && go build ./cmd/Side-B/main.go -o Side-B 
 ```
+Make sure to make a .env file and store your discogs api key
+touch .env && echo "DISCOGS_TOKEN=enter_your_discogs_token">> .env
