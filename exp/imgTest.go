@@ -117,19 +117,23 @@ func main() {
 		fmt.Printf("Failed to open img: %v\n", err)
 	}
 
-	render, err := img.Protocol(termimg.ITerm2).Width(40).Render()
+	// protocol := termimg.DetectProtocol()
+	render, err := img.
+			Protocol(termimg.Halfblocks).
+			Dither(true).
+			Width(40).
+			Height(20).
+			Render()
 	if err != nil {
 		fmt.Printf("Failed to print img: %v\n", err)
 	}
 	// .WidthPixels(150).HeightPixels(144)
-
+	//
+	//
 	out := bufio.NewWriter(os.Stdout)
-
-	// Add a couple newlines before/after to clear the prompt
 	out.WriteString("\n")
 	out.WriteString(render)
 	out.WriteString("\n")
-
-	// This is the crucial part: Flush() forces the data out to the terminal
 	out.Flush()
+
 }
