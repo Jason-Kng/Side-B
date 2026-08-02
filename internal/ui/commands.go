@@ -11,7 +11,7 @@ func addRecord(usrToken string, releaseID int, store *db.RecordStore) tea.Msg {
 	logger.Info("Adding record with ID: %d", releaseID)
 	resp, err := api.RequestRelease(releaseID, usrToken)
 	if err != nil {
-		logger.Error("api.RequestRelease func error: %w", err)
+		logger.Error("api.RequestRelease func error: %v", err)
 		return ErrorMsg{Err: err}
 	}
 
@@ -19,13 +19,13 @@ func addRecord(usrToken string, releaseID int, store *db.RecordStore) tea.Msg {
 
 	record, err := api.ReturnRecord(resp)
 	if err != nil {
-		logger.Error("api.ReturnRecord func error: %w", err)
+		logger.Error("api.ReturnRecord func error: %v", err)
 		return ErrorMsg{Err: err}
 	}
 
 	err = store.AddRecord(record)
 	if err != nil {
-		logger.Error("AddRecord func error: %w", err)
+		logger.Error("AddRecord func error: %v", err)
 		return ErrorMsg{Err: err}
 	}
 
@@ -38,7 +38,7 @@ func delRecord(releaseID int, store *db.RecordStore) tea.Msg {
 	logger.Info("Deleting record with ID: %d", releaseID)
 	delErr := store.DeleteRecord(releaseID)
 	if delErr != nil {
-		logger.Error("DeleteRecord func error: %w", delErr)
+		logger.Error("DeleteRecord func error: %v", delErr)
 		return ErrorMsg{Err: delErr}
 	}
 

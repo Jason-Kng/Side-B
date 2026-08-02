@@ -16,15 +16,21 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 		return m, nil
 	case RecordAddedMsg:
-		logger.Info("Record added: %d\n", msg.ReleaseID)
+		logger.Info("Record added: %d", msg.ReleaseID)
 		m.popupMode = PopupNone
+		m.lastError = nil
 		m.Table = BuildTable(m.Store)
 		return m, nil
 
 	case RecordDeletedMsg:
-		logger.Info("Record deleted: %d\n", msg.ReleaseID)
+		logger.Info("Record deleted: %d", msg.ReleaseID)
 		m.popupMode = PopupNone
+		m.lastError = nil
 		m.Table = BuildTable(m.Store)
+		return m, nil
+
+	case PopupCancelledMsg:
+		m.popupMode = PopupNone
 		return m, nil
 
 	case tea.KeyMsg:

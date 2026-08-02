@@ -6,7 +6,6 @@ import (
 
 	"charm.land/bubbles/v2/textinput"
 	tea "charm.land/bubbletea/v2"
-	"charm.land/lipgloss/v2"
 	"github.com/Jason-Kng/Side-B/internal/db"
 )
 
@@ -30,9 +29,8 @@ func initDel(store *db.RecordStore) DeleteModel {
 	return DeleteModel{textInput: ti, store: store}
 }
 
-func (m DeleteModel) Init() tea.Cmd {
-	return textinput.Blink
-}
+func (m DeleteModel) Init() tea.Cmd  { return textinput.Blink }
+func (m DeleteModel) View() tea.View { return tea.NewView("") }
 
 func (m DeleteModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	var cmd tea.Cmd
@@ -42,12 +40,12 @@ func (m DeleteModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		switch msg.String() {
 		case "ctrl+c", "esc":
 			return m, func() tea.Msg {
-				return RecordDeletedMsg{ReleaseID: 0}
+				return PopupCancelledMsg{}
 			}
 		case "enter":
 			if m.textInput.Value() == "" {
 				return m, func() tea.Msg {
-					return RecordDeletedMsg{ReleaseID: 0}
+					return PopupCancelledMsg{}
 				}
 			}
 
@@ -66,17 +64,6 @@ func (m DeleteModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	}
 	m.textInput, cmd = m.textInput.Update(msg)
 	return m, cmd
-}
-
-func (m DeleteModel) View() tea.View {
-	str := lipgloss.JoinVertical(
-		lipgloss.Top,
-		m.headerView(),
-		m.textInput.View(),
-		m.footerView(),
-	)
-	v := tea.NewView(str)
-	return v
 }
 
 func (m DeleteModel) headerView() string { return "What record would you like to delete?" }

@@ -16,11 +16,11 @@ type Item struct {
 	ResourceURL string `json:"resource_url"`
 	URI         string `json:"uri"`
 	Artists     []struct {
-		Name string `json:"name"`
-		Anv  string `json:"anv"`
-		Join string `json:"join"`
-		Role string `json:"role"`
-		// Tracks       string `json:"tracks"`
+		Name         string `json:"name"`
+		Anv          string `json:"anv"`
+		Join         string `json:"join"`
+		Role         string `json:"role"`
+		Tracks       string `json:"tracks"`
 		ID           int    `json:"id"`
 		ResourceURL  string `json:"resource_url"`
 		ThumbnailURL string `json:"thumbnail_url"`
@@ -89,67 +89,4 @@ type Item struct {
 	EstimatedWeight int    `json:"estimated_weight"`
 	BlockedFromSale bool   `json:"blocked_from_sale"`
 	IsOffensive     bool   `json:"is_offensive"`
-}
-
-type Folder struct {
-	// Pagination struct {
-	// Page    int      `json:"page"`
-	// Pages   int      `json:"pages"`
-	// PerPage int      `json:"per_page"`
-	// Items   int      `json:"items"`
-	// Urls    struct{} `json:"urls"`
-	// } `json:"pagination"`
-	Releases []struct {
-		ID               int    `json:"id"`
-		InstanceID       int    `json:"instance_id"`
-		DateAdded        string `json:"date_added"`
-		Rating           int    `json:"rating"`
-		BasicInformation struct {
-			ID          int    `json:"id"`
-			MasterID    int    `json:"master_id"`
-			MasterURL   string `json:"master_url"`
-			ResourceURL string `json:"resource_url"`
-			// Thumb       string `json:"thumb"`
-			// CoverImage  string `json:"cover_image"`
-			Title   string `json:"title"`
-			Year    int    `json:"year"`
-			Formats []struct {
-				Name         string   `json:"name"`
-				Qty          string   `json:"qty"`
-				Text         string   `json:"text"`
-				Descriptions []string `json:"descriptions"`
-			} `json:"formats"`
-			Labels []struct {
-				Name           string `json:"name"`
-				Catno          string `json:"catno"`
-				EntityType     string `json:"entity_type"`
-				EntityTypeName string `json:"entity_type_name"`
-				ID             int    `json:"id"`
-				// ResourceURL    string `json:"resource_url"`
-			} `json:"labels"`
-			Artists []struct {
-				Name   string `json:"name"`
-				Anv    string `json:"anv"`
-				Join   string `json:"join"`
-				Role   string `json:"role"`
-				Tracks string `json:"tracks"`
-				ID     int    `json:"id"`
-				// ResourceURL string `json:"resource_url"`
-			} `json:"artists"`
-			Genres []string `json:"genres"`
-			Styles []any    `json:"styles"`
-		} `json:"basic_information"`
-		FolderID int `json:"folder_id"`
-		Notes    []struct {
-			FieldID int    `json:"field_id"`
-			Value   string `json:"value"`
-		} `json:"notes,omitempty"`
-	} `json:"releases"`
-}
-
-type User struct {
-	ID           int    `json:"id"`
-	Username     string `json:"username"`
-	ResourceURL  string `json:"resource_url"`
-	ConsumerName string `json:"consumer_name"`
 }

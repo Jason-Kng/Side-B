@@ -22,6 +22,9 @@ func Init() error {
 }
 
 func Close() error {
+	if logFile == nil {
+		return nil
+	}
 	return logFile.Close()
 }
 

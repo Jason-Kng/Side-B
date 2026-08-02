@@ -1,12 +1,12 @@
 package ui
 
 import (
-	"log"
 	"strconv"
 
 	"charm.land/bubbles/v2/table"
 	"charm.land/lipgloss/v2"
 	"github.com/Jason-Kng/Side-B/internal/db"
+	"github.com/Jason-Kng/Side-B/pkg/logger"
 )
 
 var columns = []table.Column{
@@ -23,7 +23,7 @@ var columns = []table.Column{
 func BuildTable(store *db.RecordStore) table.Model {
 	records, err := store.GetAllRecords()
 	if err != nil {
-		log.Printf("Error getting records: %v", err)
+		logger.Error("Error getting records: %v", err)
 	}
 
 	rows := make([]table.Row, len(records))

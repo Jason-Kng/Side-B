@@ -17,27 +17,21 @@ func (s *RecordStore) createReleasesTable() error {
 	query := `
 	CREATE TABLE IF NOT EXISTS releases (
 		id INTEGER PRIMARY KEY NOT NULL,
-		artist_id VARCHAR(255),
-		title VARCHAR(255),
+		artist_id INTEGER,
+		title TEXT,
 		release_date TEXT,
 		country TEXT,
-		barcode INTEGER
+		barcode TEXT
 	);`
 
 	_, err := s.db.Exec(query)
 	if err != nil {
-		err := fmt.Errorf("failed to create Releases table: %v", err)
-		return err
+		return fmt.Errorf("failed to create Releases table: %v", err)
 	}
 
 	return nil
 }
 
 func (s *RecordStore) InitSchema() error {
-	err := s.createReleasesTable()
-	if err != nil {
-		return err
-	}
-
-	return nil
+	return s.createReleasesTable()
 }

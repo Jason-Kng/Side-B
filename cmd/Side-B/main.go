@@ -16,25 +16,27 @@ import (
 )
 
 func main() {
-	logger.Init()
+	if err := logger.Init(); err != nil {
+		log.Fatalf("Failed to initialize logger: %v", err)
+	}
 	defer logger.Close()
+
 	err := godotenv.Load()
 	if err != nil {
-		log.Fatal("Error loading .env file")
+		log.Fatalf("Error loading .env: %v", err)
 	}
 
 	discogsToken := os.Getenv("DISCOGS_TOKEN")
-
-	usrToken := fmt.Sprintf("Discogs token=%v", discogsToken)
+	usrToken := fmt.Sprintf("Discogs token=%s", discogsToken)
 
 	// create a connection to the sql db
 	conn, err := db.Conn("./Side-B.db")
 	if err != nil {
-		log.Fatalf("Could not initalize database: %v", err)
+		log.Fatalf("Could not initialize database: %v", err)
 	}
 	defer conn.Close()
 
-	// initalize db if doesnt exist or update db schema if it exists
+	// initialize db if doesnt exist or update db schema if it exists
 	store := db.NewRecordStore(conn)
 	if err := store.InitSchema(); err != nil {
 		log.Fatal(err)

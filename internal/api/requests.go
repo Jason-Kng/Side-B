@@ -36,11 +36,10 @@ func RequestRelease(releaseID int, usrToken string) (*http.Response, error) {
 }
 
 func ReturnRecord(resp *http.Response) (*types.Record, error) {
-	// scanner := bufio.NewScanner(resp.Body)
 	var itemData types.Item
 	err := json.NewDecoder(resp.Body).Decode(&itemData)
 	if err != nil {
-		logger.Error("Decode Error %w", err)
+		logger.Error("Decode Error %v", err)
 		return nil, fmt.Errorf("decode error: %w", err)
 	}
 
@@ -56,17 +55,11 @@ func ReturnRecord(resp *http.Response) (*types.Record, error) {
 		}
 	}
 
-	logger.Info("Artists count: %d", len(itemData.Artists))
-	if len(itemData.Artists) > 0 {
-		logger.Info("First artist ID: %d", itemData.Artists[0].ID)
-	}
-
 	var artistID int
 
 	if len(itemData.Artists) > 0 {
 		artistID = itemData.Artists[0].ID
 	} else {
-		artistID = 0
 		logger.Error("No artist found for release %d", itemData.ID)
 	}
 

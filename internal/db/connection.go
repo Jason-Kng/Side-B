@@ -2,7 +2,6 @@ package db
 
 import (
 	"database/sql"
-	"fmt"
 
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -15,9 +14,8 @@ func Conn(path string) (*sql.DB, error) {
 
 	pingErr := db.Ping()
 	if pingErr != nil {
-		return nil, err
+		return nil, pingErr
 	}
-	fmt.Println("Connected!")
 
 	return db, nil
 }
