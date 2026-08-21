@@ -7,7 +7,8 @@ import (
 )
 
 func Conn(path string) (*sql.DB, error) {
-	db, err := sql.Open("sqlite3", path)
+	dsn := "Side-B.db?_foreign_keys=on&_journal_mode=WAL"
+	db, err := sql.Open("sqlite3", dsn)
 	if err != nil {
 		return nil, err
 	}
