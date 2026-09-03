@@ -35,7 +35,7 @@ func RequestRelease(releaseID int, usrToken string) (*http.Response, error) {
 	return resp, nil
 }
 
-func ReturnRecord(resp *http.Response) (*types.Record, error) {
+func ReturnRecord(resp *http.Response) (*types.ReleaseData, error) {
 	var itemData types.Item
 	err := json.NewDecoder(resp.Body).Decode(&itemData)
 	if err != nil {
@@ -55,22 +55,71 @@ func ReturnRecord(resp *http.Response) (*types.Record, error) {
 		}
 	}
 
-	var artistID int
+	var ReleaseData types.ReleaseData
 
-	if len(itemData.Artists) > 0 {
-		artistID = itemData.Artists[0].ID
-	} else {
-		logger.Error("No artist found for release %d", itemData.ID)
-	}
-
-	record := types.Record{
+	release := types.Release{
 		ID:          itemData.ID,
-		ArtistID:    artistID,
+		MasterID:    itemData.MasterID,
 		Title:       itemData.Title,
+		ArtistsSort: itemData.ArtistsSort,
+		Year:        itemData.Year,
 		ReleaseDate: itemData.Released,
 		Country:     itemData.Country,
 		Barcode:     barcodeNum,
+		ThumbURL:    itemData.Thumb,
+		// RawJSON: ,
+		// FetchedAt: ,
+
 	}
 
-	return &record, nil
+	artists := make([]types.Artist, 0, len(itemData.Artists))
+	links := make([]types.ReleaseArtist, 0, len(itemData.Artists))
+	seen := make(map[int]bool)
+
+	for i, a := range itemData.Artists {
+		if !seen[a.ID] {
+			seen[a.ID] = true
+			artists = append(artists, types.Artist{
+				ID:       a.ID,
+				Name:     a.Name,
+				ThumbURL: a.ThumbnailURL,
+			})
+		}
+
+		links = append(links, types.ReleaseArtist{
+			ReleaseID: itemData.ID,
+			ArtistID:  a.ID,
+			Anv:       a.Anv,
+			JoinStr:   a.Join,
+			Position:  i,
+		})
+	}
+
+	// record := types.Record{
+	// ID:          itemData.ID,
+	// ArtistID:    artistID,
+	// Title:       itemData.Title,
+	// ReleaseDate: itemData.Released,
+	// Country:     itemData.Country,
+	// Barcode:     barcodeNum,
+	// }
+
+	tracks := make([]types.Track, 0, len(itemData.Tracklist))
+	for i, t := range itemData.Tracklist {
+		tracks = append(tracks, types.Track{
+			ReleaseID: itemData.ID,
+			Position:  t.Position,
+			Title:     t.Title,
+			Duration:  t.Duration,
+			TrackIDX:  i,
+			Type:      t.Type,
+		})
+	}
+
+	ReleaseData.Release = release
+	ReleaseData.Tracks = tracks
+	ReleaseData.Artists = artists
+	ReleaseData.Links = links
+
+	return &ReleaseData, nil
 }

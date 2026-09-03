@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS tracks (
 CREATE INDEX IF NOT EXISTS idx_tracks_release
   ON tracks(release_id, track_index);
 
-CREATE TABLE IF NOT EXISTS colleciton_items (
+CREATE TABLE IF NOT EXISTS collection_items (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   release_id INTEGER NOT NULL REFERENCES releases(id) ON DELETE CASCADE,
   discogs_instance_id INTEGER UNIQUE,

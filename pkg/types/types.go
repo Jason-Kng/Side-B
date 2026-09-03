@@ -9,6 +9,61 @@ type Record struct {
 	Barcode     string
 }
 
+type ReleaseData struct {
+	Release Release
+	Artists []Artist
+	Links   []ReleaseArtist
+	Tracks  []Track
+}
+
+type Release struct {
+	ID          int
+	MasterID    int
+	Title       string
+	ArtistsSort string
+	Year        int
+	ReleaseDate string
+	Country     string
+	Barcode     string
+	ThumbURL    string
+	RawJSON     string
+	FetchedAt   string
+}
+
+type Artist struct {
+	ID       int
+	Name     string
+	ThumbURL string
+}
+
+type ReleaseArtist struct {
+	ReleaseID int
+	ArtistID  int
+	Anv       string
+	JoinStr   string
+	Position  int
+}
+
+type Track struct {
+	ReleaseID int
+	Position  string
+	Title     string
+	Duration  string
+	TrackIDX  int
+	Type      string
+}
+
+type CollectionItem struct {
+	ID                int
+	ReleaseID         int
+	DiscogsInstanceID int
+	DateAcquired      string
+	PersonalRating    int
+	PersonalNotes     string
+	SyncStatus        string
+	CreatedAt         string
+}
+
 type Item struct {
 	ID          int    `json:"id"`
 	Status      string `json:"status"`
@@ -76,15 +131,15 @@ type Item struct {
 		Title    string `json:"title"`
 		Duration string `json:"duration"`
 	} `json:"tracklist"`
-	// Extraartists []struct {
-	// 	Name        string `json:"name"`
-	// 	Anv         string `json:"anv"`
-	// 	Join        string `json:"join"`
-	// 	Role        string `json:"role"`
-	// 	Tracks      string `json:"tracks"`
-	// 	ID          int    `json:"id"`
-	// 	ResourceURL string `json:"resource_url"`
-	// } `json:"extraartists"`
+	Extraartists []struct {
+		Name        string `json:"name"`
+		Anv         string `json:"anv"`
+		Join        string `json:"join"`
+		Role        string `json:"role"`
+		Tracks      string `json:"tracks"`
+		ID          int    `json:"id"`
+		ResourceURL string `json:"resource_url"`
+	} `json:"extraartists"`
 	Thumb           string `json:"thumb"`
 	EstimatedWeight int    `json:"estimated_weight"`
 	BlockedFromSale bool   `json:"blocked_from_sale"`

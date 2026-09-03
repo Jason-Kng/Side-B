@@ -6,7 +6,8 @@ import (
 	"fmt"
 )
 
-var schemaSQL string
+//go:embed initSchema.sql
+var schema string
 
 type RecordStore struct {
 	db *sql.DB
@@ -17,7 +18,7 @@ func NewRecordStore(db *sql.DB) *RecordStore {
 }
 
 func (s *RecordStore) InitSchema() error {
-	if _, err := s.db.Exec(schemaSQL); err != nil {
+	if _, err := s.db.Exec(schema); err != nil {
 		return fmt.Errorf("failed to execute schema: %w", err)
 	}
 	return nil
